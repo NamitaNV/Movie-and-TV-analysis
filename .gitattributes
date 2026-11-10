@@ -1,0 +1,22 @@
+# Tableau packaged workbooks are ZIP archives -> always binary.
+# Without this, Git may try to diff/normalize them and corrupt the archive.
+*.twbx binary
+
+# Unpackaged Tableau workbooks are XML -> diffable text.
+*.twb text eol=lf
+
+# Tableau extracts
+*.hyper binary
+*.tde  binary
+
+# Data and docs
+*.csv  text eol=lf
+*.md   text eol=lf
+
+# Images / binary assets
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.pdf  binary
