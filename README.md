@@ -1,12 +1,13 @@
 # 🎬 Netflix Movies & TV Shows — Exploratory Data Analysis
 
 An end-to-end exploratory data analysis of the **real Netflix catalogue** (8,807 titles),
-combining a reproducible analysis script, a set of publication-ready charts, and an
-interactive Streamlit dashboard.
+combining a reproducible analysis script, a set of publication-ready charts, an
+interactive Streamlit dashboard, and a packaged Tableau dashboard.
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
 ![pandas](https://img.shields.io/badge/pandas-2.x-150458?logo=pandas&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.32%2B-FF4B4B?logo=streamlit&logoColor=white)
+![Tableau](https://img.shields.io/badge/Tableau-Dashboard-E97627?logo=tableau&logoColor=white)
 ![Dataset](https://img.shields.io/badge/Dataset-8%2C807%20titles-E50914)
 
 ---
@@ -17,10 +18,11 @@ This project explores what Netflix's catalogue actually looks like: how movies a
 are balanced, which genres and countries dominate, how the library grew over time, how long
 content runs, which ratings are most common, and where the data is incomplete.
 
-It contains **two ways to explore the data**:
+It contains **three ways to explore the data**:
 
 | Entry point | What it does |
 |---|---|
+| `tableau/Netflix_Catalogue_Dashboard.twbx` | Packaged Tableau dashboard (open in Tableau Desktop or Public) |
 | `app.py` | Interactive Streamlit dashboard with sidebar filters and 9 analysis tabs |
 | `eda_netflix.py` | Scripted analysis that prints a full report and saves 18 charts to `output/` |
 
@@ -68,12 +70,19 @@ public mirror (with the TidyTuesday snapshot as a fallback).
 
 ```
 Movie-and-TV-analysis/
-├── app.py                  # Streamlit dashboard
-├── eda_netflix.py          # Scripted EDA + chart generation
-├── download_data.py        # Downloads & validates the real dataset
-├── netflix_titles.csv      # Real Netflix catalogue (8,807 rows)
-├── requirements.txt        # Python dependencies
-├── output/                 # 18 generated charts (PNG)
+├── app.py                        # Streamlit dashboard
+├── eda_netflix.py                # Scripted EDA + chart generation
+├── download_data.py              # Downloads & validates the real dataset
+├── prepare_tableau_data.py       # Builds Tableau-ready CSV tables
+├── build_tableau_workbook.py     # Generates the packaged Tableau workbook
+├── netflix_titles.csv            # Real Netflix catalogue (8,807 rows)
+├── requirements.txt              # Python dependencies
+├── .gitattributes                # marks .twbx as binary, .twb as text
+├── output/                       # 18 generated charts (PNG)
+├── tableau/
+│   ├── Netflix_Catalogue_Dashboard.twbx   # Open this in Tableau
+│   ├── Netflix_Catalogue_Dashboard.twb    # Workbook XML (loose files)
+│   └── Data/Netflix/             # titles.csv, genres.csv, countries.csv
 └── README.md
 ```
 
@@ -126,7 +135,13 @@ python -m streamlit run app.py
 Open **http://localhost:8501** if the browser does not open automatically.
 Press `Ctrl + C` in the terminal to stop it.
 
-### 4. Run the scripted analysis
+### 4. Open the Tableau dashboard
+
+Double-click `tableau/Netflix_Catalogue_Dashboard.twbx`, or open it from
+**Tableau Desktop / Tableau Public → File → Open**. The CSV tables are bundled
+inside the `.twbx`. See `tableau/README.md` for the sheet inventory and rebuild steps.
+
+### 5. Run the scripted analysis
 
 ```bash
 python eda_netflix.py
@@ -134,7 +149,7 @@ python eda_netflix.py
 
 The report is printed to the terminal and all charts are written to `output/`.
 
-### 5. (Optional) Re-download the dataset
+### 6. (Optional) Re-download the dataset
 
 ```bash
 python download_data.py
@@ -155,6 +170,52 @@ python download_data.py
 9. **Export** — download the currently filtered subset as CSV
 
 Filters in the sidebar (content type, year range, genre, country, rating) apply across every tab.
+
+---
+
+## 🟧 Tableau Dashboard
+
+The packaged workbook **`tableau/Netflix_Catalogue_Dashboard.twbx`** is a self-contained
+Tableau dashboard. Double-click it, or open it with **Tableau Desktop 2021.4+** or
+**Tableau Public** — the data travels inside the `.twbx`, so no CSV setup is required.
+
+It contains **3 data sources, 11 worksheets and 1 dashboard**. The full sheet inventory
+(marks, fields and filters) is documented in [`tableau/README.md`](tableau/README.md).
+
+**Layout (1400 × 900, fixed):**
+
+| Area | Visual |
+|---|---|
+| Header | Title + dataset snapshot |
+| KPI strip | Total titles, movies, TV shows, median movie runtime, countries |
+| Top row | Titles added per year (line), movies vs TV shows (pie), top 10 countries (bar) |
+| Bottom row | Top 10 genres (bar), ratings mix (bar), titles by decade (stacked bar) |
+
+**Data model:** the workbook uses three Tableau text connections generated from the
+cleaned catalogue:
+
+| Table | Grain | Used for |
+|---|---|---|
+| `titles.csv` | one row per title | KPIs, year trend, ratings, decade mix |
+| `genres.csv` | one row per title/genre | accurate top-genre counts (multi-genre titles counted once per genre) |
+| `countries.csv` | one row per title/country | accurate top-country counts (multi-country titles counted once per country) |
+
+Keeping genres and countries in separate long tables avoids the undercounting you get
+from splitting only the first value of each comma-separated list. Country bars therefore
+count **every credited country** (a co-production appears under each): the US shows 3,690
+titles here versus 3,211 in the primary-country figures quoted above. Missing country
+values are excluded, which leaves **122** countries for the KPI card.
+
+**Rebuild after changing the source data:**
+
+```bash
+python prepare_tableau_data.py      # writes tableau/Data/Netflix/*.csv
+python build_tableau_workbook.py    # writes .twb + .twbx
+```
+
+`build_tableau_workbook.py` regenerates the workbook XML from scratch, so all formatting
+and layout live in version control. The generated workbook validates against Tableau's
+published TWB schema.
 
 ---
 
@@ -187,6 +248,7 @@ The pipeline applies the following steps:
 - **NumPy** — numerical operations
 - **Matplotlib / Seaborn** — static charts
 - **Streamlit** — interactive dashboard
+- **Tableau** — packaged BI dashboard (`.twbx`)
 
 ---
 
