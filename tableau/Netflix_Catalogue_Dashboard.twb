@@ -590,7 +590,7 @@
         <rows />
         <cols />
       </table>
-      <simple-id uuid='{eaba7d15-116b-4cab-8f0d-ad1ca4e2fdb0}' />
+      <simple-id uuid='{488b6a46-bb96-4185-b922-c9693b491695}' />
     </worksheet>
 
     <worksheet name='KPI Movies'>
@@ -620,7 +620,7 @@
         <rows />
         <cols />
       </table>
-      <simple-id uuid='{ef759aa5-73da-4208-9a36-9140804968c3}' />
+      <simple-id uuid='{fb7110f2-b826-496a-be9b-9fb88fb80d5b}' />
     </worksheet>
 
     <worksheet name='KPI TV Shows'>
@@ -650,7 +650,7 @@
         <rows />
         <cols />
       </table>
-      <simple-id uuid='{97ce59e1-ddae-4189-995d-84cf92947859}' />
+      <simple-id uuid='{6009f408-70ea-4f7f-9205-e8a3f72bf810}' />
     </worksheet>
 
     <worksheet name='KPI Movie Runtime'>
@@ -680,7 +680,7 @@
         <rows />
         <cols />
       </table>
-      <simple-id uuid='{b6752e86-7c40-4fc3-ba28-cfa8cedcbb1f}' />
+      <simple-id uuid='{fee7d36e-a0c7-4450-bfdb-639b63f65cf2}' />
     </worksheet>
 
     <worksheet name='KPI Countries'>
@@ -708,7 +708,7 @@
         <rows />
         <cols />
       </table>
-      <simple-id uuid='{dc64a3e8-9bef-4759-95c7-a4d201537743}' />
+      <simple-id uuid='{b1fc7c5a-e56f-42bd-9089-8c4863cff919}' />
     </worksheet>
 
     <worksheet name='Titles Added per Year'>
@@ -738,7 +738,7 @@
         <rows>[federated.netflixtitles].[sum:Number of Records:qk]</rows>
         <cols>[federated.netflixtitles].[none:added_year:qk]</cols>
       </table>
-      <simple-id uuid='{b70c8b5c-872a-43fa-830a-bac43d45420a}' />
+      <simple-id uuid='{33229f1b-b5a1-4631-87e7-32b1445a71a6}' />
     </worksheet>
 
     <worksheet name='Movies vs TV Shows'>
@@ -773,7 +773,7 @@
         <rows />
         <cols />
       </table>
-      <simple-id uuid='{9b6fe585-af18-4034-a6a4-ab9cdd847f5a}' />
+      <simple-id uuid='{4645b11a-0dca-4476-966e-b84909e9bf5e}' />
     </worksheet>
 
     <worksheet name='Top 10 Countries'>
@@ -790,7 +790,7 @@
   <column datatype='string' name='[country]' role='dimension' type='nominal' />
   <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
   <column-instance column='[country]' derivation='None' name='[none:country:nk]' pivot='key' type='nominal' />
-</datasource-dependencies><filter class='categorical' column='[federated.netflixcountries].[none:country:nk]'><groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'><groupfilter direction='DESC' expression='SUM([Number of Records])' function='order' user:ui-marker='order'><groupfilter function='level-members' level='[none:country:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' /></groupfilter></groupfilter></filter><shelf-sorts><shelf-sort-v2 dimension-to-sort='[federated.netflixcountries].[none:country:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.netflixcountries].[sum:Number of Records:qk]' shelf='rows' /></shelf-sorts><slices><column>[federated.netflixcountries].[none:country:nk]</column></slices><aggregation value='true' /></view>
+</datasource-dependencies><filter class='categorical' column='[federated.netflixcountries].[none:country:nk]'><groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'><groupfilter direction='DESC' expression='SUM([Number of Records])' function='order' user:ui-marker='order'><groupfilter function='level-members' level='[none:country:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' /></groupfilter></groupfilter></filter><computed-sort column='[federated.netflixcountries].[none:country:nk]' direction='DESC' using='[federated.netflixcountries].[sum:Number of Records:qk]' /><slices><column>[federated.netflixcountries].[none:country:nk]</column></slices><aggregation value='true' /></view>
         <style><style-rule element='mark'><format attr='color' value='#E50914' /></style-rule></style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
@@ -803,7 +803,7 @@
         <rows>[federated.netflixcountries].[none:country:nk]</rows>
         <cols>[federated.netflixcountries].[sum:Number of Records:qk]</cols>
       </table>
-      <simple-id uuid='{e08fb67b-1994-45b5-8d3c-853543ed99cb}' />
+      <simple-id uuid='{8b98cdc8-5f2e-40e9-bb91-b4d865173573}' />
     </worksheet>
 
     <worksheet name='Top 10 Genres'>
@@ -820,7 +820,7 @@
   <column datatype='string' name='[genre]' role='dimension' type='nominal' />
   <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
   <column-instance column='[genre]' derivation='None' name='[none:genre:nk]' pivot='key' type='nominal' />
-</datasource-dependencies><filter class='categorical' column='[federated.netflixgenres].[none:genre:nk]'><groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'><groupfilter direction='DESC' expression='SUM([Number of Records])' function='order' user:ui-marker='order'><groupfilter function='level-members' level='[none:genre:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' /></groupfilter></groupfilter></filter><shelf-sorts><shelf-sort-v2 dimension-to-sort='[federated.netflixgenres].[none:genre:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.netflixgenres].[sum:Number of Records:qk]' shelf='rows' /></shelf-sorts><slices><column>[federated.netflixgenres].[none:genre:nk]</column></slices><aggregation value='true' /></view>
+</datasource-dependencies><filter class='categorical' column='[federated.netflixgenres].[none:genre:nk]'><groupfilter count='10' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'><groupfilter direction='DESC' expression='SUM([Number of Records])' function='order' user:ui-marker='order'><groupfilter function='level-members' level='[none:genre:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' /></groupfilter></groupfilter></filter><computed-sort column='[federated.netflixgenres].[none:genre:nk]' direction='DESC' using='[federated.netflixgenres].[sum:Number of Records:qk]' /><slices><column>[federated.netflixgenres].[none:genre:nk]</column></slices><aggregation value='true' /></view>
         <style><style-rule element='mark'><format attr='color' value='#E50914' /></style-rule></style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
@@ -833,7 +833,7 @@
         <rows>[federated.netflixgenres].[none:genre:nk]</rows>
         <cols>[federated.netflixgenres].[sum:Number of Records:qk]</cols>
       </table>
-      <simple-id uuid='{d1e58cda-eca6-4eac-a320-fafd162ce0c8}' />
+      <simple-id uuid='{f5e2596f-6ea6-432f-88d1-ba1a8d678dc9}' />
     </worksheet>
 
     <worksheet name='Ratings Mix'>
@@ -850,7 +850,7 @@
   <column datatype='string' name='[rating]' role='dimension' type='nominal' />
   <column-instance column='[Number of Records]' derivation='Sum' name='[sum:Number of Records:qk]' pivot='key' type='quantitative' />
   <column-instance column='[rating]' derivation='None' name='[none:rating:nk]' pivot='key' type='nominal' />
-</datasource-dependencies><shelf-sorts><shelf-sort-v2 dimension-to-sort='[federated.netflixtitles].[none:rating:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.netflixtitles].[sum:Number of Records:qk]' shelf='rows' /></shelf-sorts><aggregation value='true' /></view>
+</datasource-dependencies><computed-sort column='[federated.netflixtitles].[none:rating:nk]' direction='DESC' using='[federated.netflixtitles].[sum:Number of Records:qk]' /><aggregation value='true' /></view>
         <style><style-rule element='mark'><format attr='color' value='#E50914' /></style-rule></style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
@@ -863,7 +863,7 @@
         <rows>[federated.netflixtitles].[none:rating:nk]</rows>
         <cols>[federated.netflixtitles].[sum:Number of Records:qk]</cols>
       </table>
-      <simple-id uuid='{27f76654-45c1-4993-8f7d-6542f36e158b}' />
+      <simple-id uuid='{6799345b-2ed1-47d6-8e44-2ea98a9eae54}' />
     </worksheet>
 
     <worksheet name='Titles by Decade'>
@@ -900,7 +900,7 @@
         <rows>[federated.netflixtitles].[sum:Number of Records:qk]</rows>
         <cols>[federated.netflixtitles].[none:decade:ok]</cols>
       </table>
-      <simple-id uuid='{07a1a868-5e82-4c70-ac0c-34c20e095a44}' />
+      <simple-id uuid='{f745e96f-f7d9-4a3f-b94a-74253cf38c8d}' />
     </worksheet>
   </worksheets>
 
@@ -1007,7 +1007,7 @@
           </zone-style>
         </zone>
       </zones>
-      <simple-id uuid='{cec38b6b-decf-4369-b4a7-603d9eec2b4e}' />
+      <simple-id uuid='{721c723a-e0ec-4b58-884a-2d6931666039}' />
     </dashboard>
   </dashboards>
 <windows source-height='30'>
@@ -1027,7 +1027,7 @@
           <strip size='31'><card type='title' /></strip>
         </edge>
       </cards>
-      <simple-id uuid='{3d069330-fac4-4561-8d49-74a0afa83069}' />
+      <simple-id uuid='{6c68f1d4-30f6-4f81-b366-d0b170f6baf3}' />
     </window>
     <window class='worksheet' name='KPI Movies'>
       
@@ -1045,7 +1045,7 @@
           <strip size='31'><card type='title' /></strip>
         </edge>
       </cards>
-      <simple-id uuid='{c76b74e5-b8ac-4516-a73e-442ba55ceaf6}' />
+      <simple-id uuid='{dd867c3d-64c8-43fb-a7c3-c170313ee6fc}' />
     </window>
     <window class='worksheet' name='KPI TV Shows'>
       
@@ -1063,7 +1063,7 @@
           <strip size='31'><card type='title' /></strip>
         </edge>
       </cards>
-      <simple-id uuid='{8c9b3d25-548a-4c9f-9e79-807110edecfe}' />
+      <simple-id uuid='{02416082-6261-46cf-b47b-25fde3cc7d40}' />
     </window>
     <window class='worksheet' name='KPI Movie Runtime'>
       
@@ -1081,7 +1081,7 @@
           <strip size='31'><card type='title' /></strip>
         </edge>
       </cards>
-      <simple-id uuid='{ed8d3e30-9e00-4199-bf39-550cfdf0c326}' />
+      <simple-id uuid='{42a8da67-2441-4013-b4a9-0a29ef2e2f39}' />
     </window>
     <window class='worksheet' name='KPI Countries'>
       
@@ -1099,7 +1099,7 @@
           <strip size='31'><card type='title' /></strip>
         </edge>
       </cards>
-      <simple-id uuid='{faa63375-0f8b-458f-a93d-03421180b33f}' />
+      <simple-id uuid='{126c1e42-8408-4421-bf93-77d687f8c6ee}' />
     </window>
     <window class='worksheet' name='Titles Added per Year'>
       
@@ -1117,7 +1117,7 @@
           <strip size='31'><card type='title' /></strip>
         </edge>
       </cards>
-      <simple-id uuid='{ba4712ae-d997-4421-8d0d-1d50d6a82d9e}' />
+      <simple-id uuid='{666f919a-bc96-406c-a9ef-8694d5440c2e}' />
     </window>
     <window class='worksheet' name='Movies vs TV Shows'>
       
@@ -1135,7 +1135,7 @@
           <strip size='31'><card type='title' /></strip>
         </edge>
       </cards>
-      <simple-id uuid='{abd9901c-00d9-4fd5-bc3a-03140a782445}' />
+      <simple-id uuid='{0d35c002-d9ed-46a1-b1a5-2dec1dc4f701}' />
     </window>
     <window class='worksheet' name='Top 10 Countries'>
       
@@ -1153,7 +1153,7 @@
           <strip size='31'><card type='title' /></strip>
         </edge>
       </cards>
-      <simple-id uuid='{2de78272-c3c3-4eeb-84ea-aa63c90bff7b}' />
+      <simple-id uuid='{ed657c0a-6ecf-4fca-9413-7a6b0e9a058d}' />
     </window>
     <window class='worksheet' name='Top 10 Genres'>
       
@@ -1171,7 +1171,7 @@
           <strip size='31'><card type='title' /></strip>
         </edge>
       </cards>
-      <simple-id uuid='{356a9b29-cb44-428a-b63b-a9d4885851d3}' />
+      <simple-id uuid='{f7bf1451-6627-4568-9c52-dcc7246023cc}' />
     </window>
     <window class='worksheet' name='Ratings Mix'>
       
@@ -1189,7 +1189,7 @@
           <strip size='31'><card type='title' /></strip>
         </edge>
       </cards>
-      <simple-id uuid='{481b4716-5338-434a-a1a3-4526606a952f}' />
+      <simple-id uuid='{5512e727-8fa9-4b93-b988-b45b74fd354d}' />
     </window>
     <window class='worksheet' name='Titles by Decade'>
       
@@ -1207,7 +1207,7 @@
           <strip size='31'><card type='title' /></strip>
         </edge>
       </cards>
-      <simple-id uuid='{09fa385b-4c19-4b64-896d-829579a96f0c}' />
+      <simple-id uuid='{3053dfd4-c339-41cf-aa2f-a52e630fac8f}' />
     </window>
     <window class='dashboard' maximized='true' name='Netflix Catalogue Dashboard'>
       <viewpoints>
@@ -1224,10 +1224,7 @@
 <viewpoint name='Titles by Decade'><zoom type='entire-view' /></viewpoint>
       </viewpoints>
       <active id='0' />
-      <simple-id uuid='{90108232-f1d9-4389-8a3c-24079ff866e7}' />
+      <simple-id uuid='{c75cc4db-9a79-415f-a1ef-a946b03468eb}' />
     </window></windows>
   <thumbnails />
-  <explain-data enabled-for-viewer='false' extreme-values-enabled-for-all='false'>
-    <explanation-types />
-  </explain-data>
 </workbook>

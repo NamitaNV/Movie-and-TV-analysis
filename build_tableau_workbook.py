@@ -193,13 +193,13 @@ def slices_xml(ds, fields):
 
 
 def sort_xml(ds, dimension, measure, direction="DESC", shelf="rows"):
+    # <computed-sort> is the long-standing sort element inside <view> and is
+    # understood by Tableau 2021.4. The newer <shelf-sorts>/<shelf-sort-v2>
+    # pair is rejected by older releases, so it is not used here.
     return (
-        "<shelf-sorts>"
-        f"<shelf-sort-v2 dimension-to-sort='{ref(ds, instance_for(ds, dimension))}' "
-        f"direction='{direction}' is-on-innermost-dimension='true' "
-        f"measure-to-sort-by='{ref(ds, instance_for(ds, measure, 'Sum'))}' "
-        f"shelf='{shelf}' />"
-        "</shelf-sorts>"
+        f"<computed-sort column='{ref(ds, instance_for(ds, dimension))}' "
+        f"direction='{direction}' "
+        f"using='{ref(ds, instance_for(ds, measure, 'Sum'))}' />"
     )
 
 
@@ -707,9 +707,6 @@ def build_workbook():
 {build_dashboard()}
 {build_windows()}
   <thumbnails />
-  <explain-data enabled-for-viewer='false' extreme-values-enabled-for-all='false'>
-    <explanation-types />
-  </explain-data>
 </workbook>
 """
 

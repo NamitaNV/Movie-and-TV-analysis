@@ -58,3 +58,9 @@ layout, titles, or add worksheets.
 - Country bars count every credited country, so a co-production contributes to each country.
 - The workbook is generated at TWB format version `18.1` with a Tableau 2021.4 build
   stamp, so Tableau Desktop 2021.4+ and current Tableau Public open it directly.
+- Only elements that exist in the 2021.4 workbook schema are emitted. In particular the
+  builder uses `<computed-sort>` (not the newer `<shelf-sorts>`) and omits the
+  `<explain-data>` block that 2024.1+ schemas expect. Strict validation against the
+  latest published XSD therefore reports exactly one delta — the missing, optional in
+  practice, `explain-data` element — while older Tableau releases can open the file
+  without "no declaration found for element" errors.

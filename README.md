@@ -214,8 +214,10 @@ python build_tableau_workbook.py    # writes .twb + .twbx
 ```
 
 `build_tableau_workbook.py` regenerates the workbook XML from scratch, so all formatting
-and layout live in version control. The generated workbook validates against Tableau's
-published TWB schema.
+and layout live in version control. The generated workbook targets the **Tableau 2021.4**
+workbook schema so it opens in 2021.4 and every later release; the newer `<explain-data>`
+block is deliberately omitted for that backward compatibility, and sorting uses the
+long-standing `<computed-sort>` element rather than the newer `<shelf-sorts>`.
 
 ---
 
