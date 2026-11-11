@@ -139,7 +139,12 @@ Press `Ctrl + C` in the terminal to stop it.
 
 Double-click `tableau/Netflix_Catalogue_Dashboard.twbx`, or open it from
 **Tableau Desktop / Tableau Public → File → Open**. The CSV tables are bundled
-inside the `.twbx`. See `tableau/README.md` for the sheet inventory and rebuild steps.
+inside the `.twbx`.
+
+The workbook targets the **Tableau 2021.4** schema, so anything from 2021.4 onwards opens
+it. Free options: [Tableau Reader](https://www.tableau.com/products/reader) (view only) or
+[Tableau Public](https://www.tableau.com/products/public/download) (view, export and
+publish). See `tableau/README.md` for the sheet inventory and rebuild steps.
 
 ### 5. Run the scripted analysis
 
